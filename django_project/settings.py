@@ -25,8 +25,6 @@ SECRET_KEY = os.getenv('SECRET')
 if not SECRET_KEY:
     raise ValueError("No SECRET_KEY set in environment variables")
 
-print(SECRET_KEY)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -36,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
