@@ -4,7 +4,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
-                <small class="text-muted">{{ post.author }} | {{ post.date_posted }}</small>
+                <small class="text-muted">{{ post.author }} | {{ post.date_posted|date:"d M Y, H:i" }}</small>
                 <p class="card-text mt-3">{{ post.content }}</p>
             </div>
         </div>
