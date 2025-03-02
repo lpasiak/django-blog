@@ -1,12 +1,22 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    {% for post in posts %}
-        <div class="card mb-4">
-            <div class="card-body">
-                <h2 class="card-title">{{ post.title }}</h2>
-                <small class="text-muted">{{ post.author }} | {{ post.date_posted|date:"d M Y, H:i" }}</small>
-                <p class="card-text mt-3">{{ post.content }}</p>
+    {% if user.is_authenticated %}
+        {% for post in posts %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <small class="text-muted">{{ post.author }} | {{ post.date_posted|date:"d M Y, H:i" }}</small>
+                    <p class="card-text mt-3">{{ post.content }}</p>
+                </div>
             </div>
+        {% endfor %}
+    {% else %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2>Sorry! You can't see the posts.</h2>
+            <p><a href="{% url 'login' %}">Log in</a> to see the posts.</p>
         </div>
-    {% endfor %}
+    </div>
+
+    {% endif %}
 {% endblock %}
