@@ -1,20 +1,18 @@
 {% extends "blog/base.html" %}
 {% block content %}
     {% if user.is_authenticated %}
-        {% for post in posts %}
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-flex align-items-start">
-                        <img class="rounded-circle me-3" style="width: 70px; height: 70px;" src="{{ post.author.profile.image.url }}" alt="Post creator image.">
+                        <img class="rounded-circle me-3" style="width: 70px; height: 70px;" src="{{ object.author.profile.image.url }}" alt="Post creator image.">
                         <div>
-                            <h2 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-                            <small class="text-muted">{{ post.author }} | {{ post.date_posted|date:"d M Y, H:i" }}</small>
-                            <p class="card-text mt-3">{{ post.content }}</p>
+                            <h2 class="card-title">{{ object.title }}</h2>
+                            <small class="text-muted">{{ object.author }} | {{ object.date_posted|date:"d M Y, H:i" }}</small>
+                            <p class="card-text mt-3">{{ object.content }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
     {% else %}
     <div class="card mb-4">
         <div class="card-body">
